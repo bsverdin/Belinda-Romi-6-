@@ -64,12 +64,12 @@ public class RobotContainer {
     // is scheduled over it.
     m_drivetrain.setDefaultCommand(getArcadeDriveCommand());
 
-    // Example of how to use the onboard IO
-    Button onboardButtonA = new Button(m_onboardIO::getButtonAPressed);
-    onboardButtonA
-        .whenActive(new PrintCommand("Button A Pressed"))
-        .whenInactive(new PrintCommand("Button A Released"));
-
+JoystickButton buttonFWD = new JoystickButton(m_controller, 1);
+        buttonFWD.whenActive(new /*still need to create command*/)
+    //This button will automatically turn the robot, for quicker, easier turns. Your controll will resume after the robot is finished.
+        JoystickButton buttonTurn180 = new JoystickButton(m_controller,1);
+        buttonTurn180.whenPressed(new TurnDegrees(-0.5, 180));
+    
     // Setup SmartDashboard options
     m_chooser.setDefaultOption("Auto Routine Distance", new AutonomousDistance(m_drivetrain));
     m_chooser.addOption("Auto Routine Time", new AutonomousTime(m_drivetrain));
